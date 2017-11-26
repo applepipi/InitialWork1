@@ -23,6 +23,7 @@
         密码： <input type="password" name="password" /> <br />
         <input type="submit" value="登录" />
         <input type="reset" value="重置" />
+        <a href="${website}signIn">没有账户？注册</a>
     </form>
 </body>
 </html>

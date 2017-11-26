@@ -12,7 +12,28 @@ import com.xiaozl.initialwork1.entity.User;
  */
 public interface UserService {
 
-    public void newUser(@Param("user") User user) throws Exception;
+    /**
+     * 新建用户，验重
+     *
+     * @param user
+     * @throws Exception
+     */
+    public User newUser(User user) throws Exception;
 
+    /**
+     * 检验登录
+     *
+     * @param user
+     * @return
+     * @throws Exception
+     */
     public boolean checkLogin(User user) throws Exception;
+
+    /**
+     * 用户列表
+     *
+     * @return
+     * @throws Exception
+     */
+    public List<User> listUser() throws Exception;
 }

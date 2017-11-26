@@ -41,6 +41,7 @@ public class IndexController {
             //If pass, set attribute to session, then redirect to index page.
             if (userService.checkLogin(user)) {
                 request.getSession().setAttribute("user", user);
+                model.addAttribute("userName",user.getUserName());
                 return "index";
             }
             //If not pass, send error attribute.
@@ -53,4 +54,32 @@ public class IndexController {
             return "login";
         }
     }
+
+    //logout
+    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request) throws Exception {
+        request.getSession().removeAttribute("user");
+        return "login";
+    }
+
+    //toSignIn
+    @RequestMapping(value = "signIn", method = RequestMethod.GET)
+    public String toSignIn() throws Exception {
+        return "signIn";
+    }
+
+    //signIn
+    @RequestMapping(value = "signIn", method = RequestMethod.POST)
+    public String signIn(User user, Model model) throws Exception {
+        try {
+            User u = userService.newUser(user);
+            if(u != null)
+                return "login";
+            model.addAttribute("signIn_fail","用户名和密码不能为空 或 用户名已存在！");
+        } catch (Exception e) {
+            model.addAttribute("signIn_err", "注册失败!");
+        }
+        return "signIn";
+    }
+
 }
