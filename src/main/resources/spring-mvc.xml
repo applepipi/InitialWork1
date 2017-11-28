@@ -33,7 +33,11 @@
         <!--最大上传大小(字节)-->
         <property name="maxUploadSize" value="1048576" />
     </bean>
-
-
-
+    <!-- 登录拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/index"/>
+            <bean class="com.xiaozl.initialwork1.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

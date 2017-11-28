@@ -26,7 +26,7 @@ public class IndexController {
     public String toLogin(HttpServletRequest request)
     {
         //If session have attribute "user", jump to index page, else jump to login page.
-        if (request.getSession().getAttribute("user") != null){
+        if (request.getSession().getAttribute("userName") != null){
             return "index";
         }
         else {
@@ -40,7 +40,7 @@ public class IndexController {
         try {
             //If pass, set attribute to session, then redirect to index page.
             if (userService.checkLogin(user)) {
-                request.getSession().setAttribute("user", user);
+                request.getSession().setAttribute("userName", user.getUserName());
                 model.addAttribute("userName",user.getUserName());
                 return "index";
             }
@@ -58,7 +58,7 @@ public class IndexController {
     //logout
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request) throws Exception {
-        request.getSession().removeAttribute("user");
+        request.getSession().removeAttribute("userName");
         return "login";
     }
 
@@ -82,4 +82,9 @@ public class IndexController {
         return "signIn";
     }
 
+    //toIndex
+    @RequestMapping(value = "index", method = RequestMethod.GET)
+    public String toIndex() throws Exception {
+        return "index";
+    }
 }

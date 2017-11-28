@@ -34,6 +34,10 @@
         <property name="maxUploadSize" value="1048576" />
     </bean>
 
-
-
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/index"/>
+            <bean class="com.xiaozl.initialwork1.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

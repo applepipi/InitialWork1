@@ -27,11 +27,24 @@
       <param-value>true</param-value>
     </init-param>
   </filter>
+  <!-- 过滤不合法路径 -->
+  <filter>
+    <filter-name>UrlFilter</filter-name>
+    <filter-class>com.xiaozl.initialwork1.filter.UrlFilter</filter-class>
+    <init-param>
+      <param-name>exclude</param-name>
+      <param-value>/login;/logout;/signIn;/index</param-value>
+    </init-param>
+  </filter>
   <filter-mapping>
     <filter-name>SpringEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-
+  <filter-mapping>
+    <filter-name>UrlFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
   <!-- 日志记录 -->
   <context-param>
     <!-- 日志配置文件路径 -->
