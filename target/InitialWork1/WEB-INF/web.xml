@@ -27,24 +27,33 @@
       <param-value>true</param-value>
     </init-param>
   </filter>
-  <!-- 过滤不合法路径 -->
   <filter>
+    <filter-name>AuthFilter</filter-name>
+    <filter-class>com.xiaozl.initialwork1.filter.AuthFilter</filter-class>
+  </filter>
+  <!-- 过滤不合法路径，跳转至login -->
+  <!--<filter>
     <filter-name>UrlFilter</filter-name>
     <filter-class>com.xiaozl.initialwork1.filter.UrlFilter</filter-class>
     <init-param>
       <param-name>exclude</param-name>
-      <param-value>/login;/logout;/signIn;/index</param-value>
+      <param-value>/login;/logout;/signIn;/index;/admin/*</param-value>
     </init-param>
-  </filter>
+  </filter>-->
+  <!-- 权限过滤器 -->
   <filter-mapping>
     <filter-name>SpringEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+  <!--<filter-mapping>
     <filter-name>UrlFilter</filter-name>
     <url-pattern>/*</url-pattern>
     <dispatcher>REQUEST</dispatcher>
-  </filter-mapping>
+  </filter-mapping>-->
   <!-- 日志记录 -->
   <context-param>
     <!-- 日志配置文件路径 -->
@@ -79,4 +88,16 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
+  <error-page>
+    <error-code>403</error-code>
+    <location>/WEB-INF/views/error/403.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/views/error/404.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>405</error-code>
+    <location>/WEB-INF/views/error/405.jsp</location>
+  </error-page>
 </web-app>

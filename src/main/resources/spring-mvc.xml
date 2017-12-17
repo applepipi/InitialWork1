@@ -33,11 +33,36 @@
         <!--最大上传大小(字节)-->
         <property name="maxUploadSize" value="1048576" />
     </bean>
+
+    <!-- 简单的异常处理 -->
+    <!--<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                &lt;!&ndash; 映射目录为/WEB-INF/views/error/upload_error.jsp &ndash;&gt;
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/error/upload_error</prop>
+            </props>
+        </property>
+    </bean>-->
+    <!-- 异常处理 -->
+    <bean id="exceptionResolver" class="com.xiaozl.initialwork1.web.controller.exception.GlobalHandlerExceptionResolver">
+       <!-- 将它写到了全局异常处理异常处理类中<property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error/upload_error</prop>
+            </props>
+        </property>-->
+    </bean>
     <!-- 登录拦截器 -->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/index"/>
-            <bean class="com.xiaozl.initialwork1.interceptor.LoginInterceptor"/>
+            <mvc:mapping path="/**"/>
+            <bean class="com.xiaozl.initialwork1.interceptor.LoginInterceptor">
+                <property name="excludeUrl">
+                    <list>
+                        <value>/login</value>
+                        <value>/signIn</value>
+                    </list>
+                </property>
+            </bean>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>

@@ -36,4 +36,30 @@ public interface UserService {
      * @throws Exception
      */
     public List<User> listUser() throws Exception;
+
+    /**
+     * 删除用户
+     *
+     * @param userId
+     * @throws Exception
+     */
+    public boolean delUser(Integer userId) throws Exception;
+
+    /**
+     * 根据id查找用户
+     *
+     * @param userId
+     * @return
+     * @throws Exception
+     */
+    public User queryById(Integer userId) throws Exception;
+
+    /**
+     * 修改用户
+     *
+     * @param user
+     * @return
+     * @throws Exception
+     */
+    public boolean updateUser(User user) throws Exception;
 }

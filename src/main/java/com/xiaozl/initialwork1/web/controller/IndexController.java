@@ -3,6 +3,7 @@ package com.xiaozl.initialwork1.web.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.xiaozl.initialwork1.exception.BusinessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,21 +24,19 @@ public class IndexController {
     private UserService userService;
 
     @RequestMapping(value = {"", "/", "login"}, method = RequestMethod.GET)
-    public String toLogin(HttpServletRequest request)
-    {
+    public String toLogin(HttpServletRequest request) {
         //If session have attribute "user", jump to index page, else jump to login page.
-        if (request.getSession().getAttribute("userName") != null){
+        if (request.getSession().getAttribute("userName") != null) {
             return "index";
-        }
-        else {
+        } else {
             return "login";
         }
     }
 
     //Login
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public String login(User user, Model model, HttpServletRequest request) throws Exception{
-        try {
+    public String login(User user, Model model, HttpServletRequest request) throws Exception {
+        /*try {
             //If pass, set attribute to session, then redirect to index page.
             if (userService.checkLogin(user)) {
                 request.getSession().setAttribute("userName", user.getUserName());
@@ -51,6 +50,17 @@ public class IndexController {
             }
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
+            return "login";
+        }*/
+        //If pass, set attribute to session, then redirect to index page.
+        if (userService.checkLogin(user)) {
+            request.getSession().setAttribute("userName", user.getUserName());
+            model.addAttribute("userName", user.getUserName());
+            return "index";
+        }
+        //If not pass, send error attribute.
+        else {
+            model.addAttribute("login_err", "登录失败!");
             return "login";
         }
     }
@@ -71,14 +81,21 @@ public class IndexController {
     //signIn
     @RequestMapping(value = "signIn", method = RequestMethod.POST)
     public String signIn(User user, Model model) throws Exception {
-        try {
+        /*try {
             User u = userService.newUser(user);
             if(u != null)
                 return "login";
             model.addAttribute("signIn_fail","用户名和密码不能为空 或 用户名已存在！");
         } catch (Exception e) {
-            model.addAttribute("signIn_err", "注册失败!");
+            model.addAttribute("errorMessage",e.getMessage());
+            return "error/500";
         }
+        return "signIn";*/
+
+        User u = userService.newUser(user);
+        if (u != null)
+            return "login";
+        model.addAttribute("signIn_fail", "用户名和密码不能为空 或 用户名已存在！");
         return "signIn";
     }
 

@@ -1,0 +1,39 @@
+https://stackoverflow.com/    stackoverflow  问问题的
+
+http://blog.csdn.net/luanlouis/article/details/35570809  MyBatis 3
+
+http://git.oschina.net/progit/   git
+
+http://blog.csdn.net/eden_m516/article/details/52983037   过滤器拦截器
+
+https://docs.oracle.com/javase/9/   新特性
+https://docs.oracle.com/javase/9/whatsnew/toc.htm#JSNEW-GUID-71A09701-7412-4499-A88D-53FA8BFBD3D0
+
+http://blog.csdn.net/luqin1988/article/details/7970988  spring异常机制
+http://blog.csdn.net/mr__fang/article/details/9092511
+
+https://github.com/brianway/java-learning  java学习
+
+http://www.taoyongpan.xin/2017/12/03/%E4%B8%80%E4%B8%AAHelloWorld%E5%BC%95%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83/  helloworld
+
+www.taoyongpan.xin/2017/12/05/sql001/  数据库索引
+
+https://wenku.baidu.com/view/f2af327a31b765ce050814c7.html 操作系统
+
+http://c6290bb5.wiz03.com/share/s/36agKR0usALQ2Qxl_A2d-LNt3z_18p1u3Qbt2dxAjK3_Hc9_  tomcat简介
+
+http://c6290bb5.wiz03.com/share/s/36agKR0usALQ2Qxl_A2d-LNt3-bYAr0X3kag2fabLd2BW4Ra  tomcat部署
+
+https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-pat12ctv.html  idea
+
+linux基本命令
+
+jvm基本参数
+
+设计模式
+
+spring
+
+多线程
+
+操作系统：进程线程、中断、IO方式

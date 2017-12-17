@@ -23,4 +23,21 @@
         SELECT *
         FROM t_user
     </select>
+
+    <delete id="delUser">
+        DELETE FROM t_user
+        WHERE id = #{userId}
+    </delete>
+
+    <select id="queryById" resultMap="userResultMap">
+        SELECT *
+        FROM t_user
+        WHERE id = #{userId}
+    </select>
+
+    <update id="updateUser">
+        UPDATE t_user
+        SET user_name = #{user.userName},password = #{user.password}
+        WHERE id = #{user.id}
+    </update>
 </mapper>
